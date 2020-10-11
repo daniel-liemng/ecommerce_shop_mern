@@ -79,4 +79,7 @@ const products = [
   },
 ]
 
-module.exports = products
+// module.exports = products
+
+// es6 in NodeJS
+export default products;
