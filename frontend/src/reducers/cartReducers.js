@@ -7,7 +7,7 @@ import {
 
 // Cart
 export const cartReducer = (
-  state = { cartItems: [], shippingAddress: {}, paymentMethod: "" },
+  state = { cartItems: [], shippingAddress: {} },
   action
 ) => {
   switch (action.type) {
