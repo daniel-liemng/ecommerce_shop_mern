@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -6,7 +7,6 @@ import {
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
 } from "../constants/orderConstants";
-import axios from "axios";
 
 // Create new order
 export const createOrder = (order) => async (dispatch, getState) => {

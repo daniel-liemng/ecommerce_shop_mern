@@ -15,7 +15,7 @@ import {
 import {
   orderCreateReducer,
   orderDetailsReducer,
-} from "./reducers/orderReducer";
+} from "./reducers/orderReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
