@@ -33,9 +33,7 @@ const PlaceOrderScreen = ({ history }) => {
 
   // Get state from OrderCreate
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { loading, success, order, error } = orderCreate;
-
-  console.log("order", order);
+  const { success, order, error } = orderCreate;
 
   // if create order OK, redirect
   useEffect(() => {
