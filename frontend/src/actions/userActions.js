@@ -16,6 +16,7 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
+  USER_LIST_RESET,
 } from "../constants/userConstants";
 
 //// LOG IN
@@ -54,6 +55,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_LIST_RESET });
 };
 
 //// REGISTER
@@ -167,8 +169,6 @@ export const listUsers = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(`/api/users`, config);
-
-    console.log("data", data);
 
     dispatch({ type: USER_LIST_SUCCESS, payload: data });
   } catch (error) {
