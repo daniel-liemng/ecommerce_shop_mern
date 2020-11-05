@@ -8,6 +8,7 @@ import { createOrder } from "../actions/orderActions";
 
 const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
+
   const {
     shippingAddress: { address, city, postalCode, country },
     paymentMethod,
@@ -33,6 +34,8 @@ const PlaceOrderScreen = ({ history }) => {
   // Get state from OrderCreate
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, order, error } = orderCreate;
+
+  console.log("order", order);
 
   // if create order OK, redirect
   useEffect(() => {
