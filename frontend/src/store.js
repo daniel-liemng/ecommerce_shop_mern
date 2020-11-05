@@ -11,6 +11,7 @@ import {
   userRegisterReducer,
   userDetailsReducer,
   userUpdateProfileReducer,
+  userListReducer,
 } from "./reducers/userReducers";
 import {
   orderCreateReducer,
@@ -29,6 +30,8 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
+  // Admin
+  userList: userListReducer,
 });
 
 // cart in localStorage
