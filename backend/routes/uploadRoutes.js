@@ -7,9 +7,9 @@ const router = express.Router();
 // config
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cd(null, "uploads/");
+    cb(null, "uploads/");
   },
-  filename() {
+  filename(req, file, cb) {
     cb(
       null,
       `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
@@ -17,29 +17,28 @@ const storage = multer.diskStorage({
   },
 });
 
-const checkFileType = (file, cb) => {
+function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/;
-  const extname = filetypes.test(
-    path.extname(file.originalname).toLocaleLowerCase()
-  );
-  const minetype = filetypes.test(file.minetype);
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
 
-  if (extname && minetype) {
+  if (extname && mimetype) {
     return cb(null, true);
   } else {
     cb("Images only");
   }
-};
+}
 
 const upload = multer({
   storage,
   // check file type
-  fileFilter: (req, file, cb) => {
+  fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
 });
 
 router.post("/", upload.single("image"), (req, res) => {
+  console.log("fff", req.file.path);
   res.send(`/${req.file.path}`);
 });
 
