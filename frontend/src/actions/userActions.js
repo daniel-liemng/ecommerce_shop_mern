@@ -10,6 +10,7 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_SUCCESS,
   USER_UPDATE_PROFILE_FAIL,
@@ -23,8 +24,8 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
-  // USER_UPDATE_RESET,
 } from "../constants/userConstants";
+import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 
 //// LOG IN
 export const login = (email, password) => async (dispatch) => {
@@ -62,6 +63,8 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_DETAILS_RESET });
+  dispatch({ type: ORDER_LIST_MY_RESET });
   dispatch({ type: USER_LIST_RESET });
 };
 
