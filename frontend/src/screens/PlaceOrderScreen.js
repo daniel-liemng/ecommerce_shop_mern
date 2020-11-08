@@ -5,6 +5,8 @@ import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderActions";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
+import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 
 const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
@@ -39,6 +41,8 @@ const PlaceOrderScreen = ({ history }) => {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+      dispatch({ type: CART_CLEAR_ITEMS });
     }
   }, [history, success, order]);
 
